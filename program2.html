@@ -1,0 +1,52 @@
+<!-- Steven Frisbie 4561991 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <title>Programming Assignment 2</title>
+
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            attribute vec4 vPosition;
+            attribute mat4 rotationMatrix;
+            uniform mat4 modelViewMatrix;
+            uniform mat4 projectionMatrix; 
+
+            void main() 
+            {
+                gl_PointSize = 5.0;
+                gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+            }
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            precision mediump float;
+            uniform vec4 fColor;
+            
+            void main()
+            {
+                gl_FragColor = fColor;
+            }
+        </script>
+
+        <!-- Included in the folder but can also be Downloaded: http://www.cs.unm.edu/~angel/WebGL/7E/Common/angelCommon.zip -->
+        <script type="text/javascript" src="webgl-utils.js"></script>
+        <script type="text/javascript" src="initShaders.js"></script>
+        <script type="text/javascript" src="MV.js"></script>
+        <script type="text/javascript" src="program2.js"></script>
+        
+    </head>
+
+    <body> 
+        <p id="demo">Click Draw Mode to Start!</p>
+
+        <canvas id="gl-canvas" width="512" height="400" style="border: 1px solid black">
+            Oops ... your browser doesn't support the HTML5 canvas element
+        </canvas>
+        
+        <!--Just the basic Button is provided. Add other Menu Options -->
+        <div>
+        	<input onclick="selectMode()" type="button" value="Draw Mode" id="myButton1" />
+        </div>
+        
+    </body>
+</html>
